@@ -5,7 +5,8 @@
 [![Software License][ico-license]][link-license]
 
 
-![image](https://github.com/dotswan/filament-grapesjs/assets/20874565/f53caf37-d229-412a-8cb7-ab851590640c)
+![image](https://github.com/dotswan/filament-grapesjs-v3/assets/20874565/2ad36e55-4d56-42f6-8946-b894dab5d4fa)
+
 
 ## Introduction 
 
