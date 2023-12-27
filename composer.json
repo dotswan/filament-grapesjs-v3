@@ -65,7 +65,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Dotswan\\FilamentGrapesjs\\FilamentGrapesjsServiceProvider"
+        "Dotswan\\FilamentGrapesjs\\FilamentGrapesJsServiceProvider"
       ],
       "aliases": {
         "FilamentGrapesjs": "Dotswan\\FilamentGrapesjs\\Facades\\FilamentGrapesjs"
