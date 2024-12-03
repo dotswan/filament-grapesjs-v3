@@ -1,7 +1,7 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data(
         "grapesjs",
-        ({ state, statePath, readOnly, tools, minHeight, container }) => ({
+        ({ state, statePath, readOnly, tools, minHeight, container, projectData }) => ({
             instance: null,
             state: state,
             tools: tools,
@@ -9,6 +9,7 @@ document.addEventListener('alpine:init', () => {
                 let enabledTools = {};
 
                 this.instance =  grapesjs.init({
+                    projectData: projectData,
                     height: minHeight + 'px',
                     container: container ? container : ".filament-grapesjs .grapesjs-wrapper",
                     showOffsets: true,
@@ -21,14 +22,10 @@ document.addEventListener('alpine:init', () => {
                     ],
                 });
                 this.instance.on('update', e => {
-                    var content = this.instance.getHtml({
+                    this.instance.getHtml({
                         cleanId: true
                     });
-                    var extract = content.match(/<body\b[^>]*>([\s\S]*?)<\/body>/);
-                    if(extract)
-                        this.state = extract[1];
-                    else
-                        this.state = this.instance.getHtml();
+                    this.state = this.instance.getProjectData();
                 })
             }
         })
