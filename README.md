@@ -30,7 +30,7 @@ This package extends Filament to include a field type called Grapesjs, leveragin
 You can easily install the package via Composer:
 
 ```bash
-composer require dotswan/filament-grapesjs-v3
+composer require venuesight/filament-grapesjs-v3
 ```
 
 ## Basic Usage
