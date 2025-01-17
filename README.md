@@ -57,8 +57,38 @@ class FilamentResource extends Resource
     public static function form(Form $form)
     {
         return $form->schema([
-            GrapesJs::make('page_layout')
-                ->id('page_layout'),
+                GrapesJs::make( 'page_layout' )
+                    ->tools([
+                        // tools you want to include
+                    ])
+                    ->plugins([
+                        'grapesjs-tailwind',
+                        // other plugins you've included in your resources directory and referenced in filament-grapesjs.php
+                        // e.g. 'gjs-blocks-basic, https://github.com/GrapesJS/blocks-basic'
+                    ])
+                    ->settings([
+                        'storageManager' => [
+                            'type' => 'local',
+                            'options' => [
+                                'local' => [
+                                    'key' => 'gsproject-test',
+                                ],
+                            ],
+                        ],
+                        'styleManager' => [
+                            'sectors' => [
+                                [
+                                    'name' => 'General',
+                                    'open' => false,
+                                    'buildProps' => [
+                                        'background-color',
+                                        // other properties you want to include
+                                    ],
+                                ],
+                            ],
+                        ]
+                    ])
+                    ->id( 'page_layout' )
            ]);
     }
     ...
