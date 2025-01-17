@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Venuesight\FilamentGrapesjs;
+namespace Dotswan\FilamentGrapesjs;
 
 use Filament\Support\Assets\Js;
 use Filament\Support\Assets\Css;
@@ -28,7 +28,7 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
                     ->publishConfigFile()
-                    ->askToStarRepoOnGitHub('venuesight/filament-grapesjs-v3');
+                    ->askToStarRepoOnGitHub('dotswan/filament-grapesjs-v3');
             });
 
         if (file_exists($package->basePath('/../resources/views'))) {
@@ -56,7 +56,7 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
 
     protected function getAssetPackageName(): ?string
     {
-        return 'venuesight/filament-grapesjs-v3';
+        return 'dotswan/filament-grapesjs-v3';
     }
 
     /**

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Venuesight\FilamentGrapesjs\Fields;
+namespace Dotswan\FilamentGrapesjs\Fields;
 
 use Filament\Forms\Components\Field;
 use Filament\Forms\Concerns\HasStateBindingModifiers;
-use Venuesight\FilamentGrapesjs\Fields\Concerns\InteractsWithTools;
+use Dotswan\FilamentGrapesjs\Fields\Concerns\InteractsWithTools;
 
 class GrapesJs extends Field
 {

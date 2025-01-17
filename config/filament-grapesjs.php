@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-// config for Venuesight/FilamentGrapesjs
+// config for Dotswan/FilamentGrapesjs
 return [
 
     /**

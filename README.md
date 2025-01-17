@@ -33,6 +33,12 @@ You can easily install the package via Composer:
 composer require venuesight/filament-grapesjs-v3
 ```
 
+## Publish Configuration
+
+```bash
+php artisan vendor:publish --tag="filament-grapesjs-config"
+```
+
 ## Basic Usage
 
 Resource file:

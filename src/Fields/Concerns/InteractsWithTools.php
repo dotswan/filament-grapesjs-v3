@@ -1,6 +1,6 @@
 <?php
 
-namespace Venuesight\FilamentGrapesjs\Fields\Concerns;
+namespace Dotswan\FilamentGrapesjs\Fields\Concerns;
 
 use Closure;
 
