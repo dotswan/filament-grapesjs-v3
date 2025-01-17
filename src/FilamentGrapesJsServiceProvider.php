@@ -75,17 +75,22 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
             Js::make('filament-grapesjs', __DIR__.'/../resources/dist/js/filament-grapesjs.js'),
         ];
 
-        foreach( config( 'filament-grapesjs.assets', [] ) as $type => $assets )
+        foreach (config( 'filament-grapesjs.assets', [] ) as $type => $assets)
         {
             foreach ($assets as $slug => $path)
             {
+                $file = resource_path($path);
+                if (!file_exists($file))
+                {
+                    continue;
+                }
                 if ($type === 'css')
                 {
-                    $files[] = Css::make($slug, $path);
+                    $files[] = Css::make($slug, $file);
                 }
                 else
                 {
-                    $files[] = Js::make($slug, $path);
+                    $files[] = Js::make($slug, $file);
                 }
             }
         }
