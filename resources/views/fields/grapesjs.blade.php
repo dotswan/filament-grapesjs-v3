@@ -22,6 +22,8 @@
             statePath: '{{ $getStatePath() }}',
             readOnly: {{ $isDisabled() ? 'true' : 'false' }},
             tools: @js($getTools()),
+            plugins: @js($getPlugins()),
+            settings: @js($getSettings()),
             minHeight: @js($getMinHeight())
         })"
 >

@@ -1,14 +1,16 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data(
         "grapesjs",
-        ({ state, statePath, readOnly, tools, minHeight, container }) => ({
+        ({ state, statePath, readOnly, tools, minHeight, container, plugins, settings }) => ({
             instance: null,
             state: state,
             tools: tools,
+            plugins: plugins,
+            settings: settings,
             init() {
                 let enabledTools = {};
 
-                this.instance =  grapesjs.init({
+                let allSettings = {
                     height: minHeight + 'px',
                     container: container ? container : ".filament-grapesjs .grapesjs-wrapper",
                     showOffsets: true,
@@ -16,10 +18,10 @@ document.addEventListener('alpine:init', () => {
                     noticeOnUnload: false,
                     storageManager: false,
                     loadHtml: state,
-                    plugins: [
-                        "grapesjs-tailwind",
-                    ],
-                });
+                    plugins: plugins,
+                    ...settings
+                }
+                this.instance =  grapesjs.init( allSettings );
                 this.instance.on('update', e => {
                     var content = this.instance.getHtml({
                         cleanId: true

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dotswan\FilamentGrapesjs;
+namespace Venuesight\FilamentGrapesjs;
 
 use Filament\Support\Assets\Js;
 use Filament\Support\Assets\Css;
@@ -24,17 +24,12 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
 
         $package->name(static::$name)
             ->hasCommands($this->getCommands())
+            ->hasConfigFile()
             ->hasInstallCommand(function (InstallCommand $command): void {
                 $command
                     ->publishConfigFile()
-                    ->askToStarRepoOnGitHub('dotswan/filament-grapesjs-v3');
+                    ->askToStarRepoOnGitHub('venuesight/filament-grapesjs-v3');
             });
-
-        $configFileName = $package->shortName();
-
-        if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
-            $package->hasConfigFile();
-        }
 
         if (file_exists($package->basePath('/../resources/views'))) {
             $package->hasViews(static::$viewNamespace);
@@ -61,7 +56,7 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
 
     protected function getAssetPackageName(): ?string
     {
-        return 'dotswan/filament-grapesjs-v3';
+        return 'venuesight/filament-grapesjs-v3';
     }
 
     /**
@@ -69,7 +64,7 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
      */
     protected function getAssets(): array
     {
-        return [
+        $files = [
             // AlpineComponent::make('filament-grapesjs', __DIR__.'/../resources/dist/components/filament-grapesjs.js'),
 
             Css::make('grapesjs', __DIR__.'/../resources/dist/css/grapes.min.css'),
@@ -79,6 +74,23 @@ class FilamentGrapesJsServiceProvider extends PackageServiceProvider
             Js::make('filament-grapesjs-tailwindcss', __DIR__.'/../resources/dist/js/grapesjs-tailwind.min.js'),
             Js::make('filament-grapesjs', __DIR__.'/../resources/dist/js/filament-grapesjs.js'),
         ];
+
+        foreach( config( 'filament-grapesjs.assets', [] ) as $type => $assets )
+        {
+            foreach ($assets as $slug => $path)
+            {
+                if ($type === 'css')
+                {
+                    $files[] = Css::make($slug, $path);
+                }
+                else
+                {
+                    $files[] = Js::make($slug, $path);
+                }
+            }
+        }
+
+        return $files;
     }
 
     /**
