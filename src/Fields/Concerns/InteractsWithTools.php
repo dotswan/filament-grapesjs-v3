@@ -10,4 +10,14 @@ trait InteractsWithTools
     {
         return $this->evaluate($this->tools);
     }
+
+    public function getPlugins(): array
+    {
+        return $this->evaluate($this->plugins);
+    }
+
+    public function getSettings(): array
+    {
+        return $this->evaluate($this->settings);
+    }
 }

@@ -15,9 +15,14 @@ class GrapesJs extends Field
     use InteractsWithTools;
     protected string $view = 'filament-grapesjs::fields.grapesjs';
 
-    protected array | Closure $tools = [
+    protected array | Closure $tools = [];
 
+    protected array | Closure $plugins = [
+        'grapesjs-tailwind',
     ];
+
+    protected array | Closure $settings = [];
+
     protected string $htmlData;
 
     protected int | Closure | null $minHeight = 768;
@@ -38,4 +43,23 @@ class GrapesJs extends Field
     {
         return $this->evaluate($this->getState());
     }
+
+    public function tools(array | Closure $tools): static
+    {
+        $this->tools = $tools;
+        return $this;
+    }
+
+    public function plugins(array | Closure $plugins): static
+    {
+        $this->plugins = $plugins;
+        return $this;
+    }
+
+    public function settings(array | Closure $settings): static
+    {
+        $this->settings = $settings;
+        return $this;
+    }
+
 }
